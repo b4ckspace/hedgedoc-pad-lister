@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Padlist{% endblock %}
+
+{% block body %}
+<header>
+	<section>
+		<h1>Padlist</h1>
+		<p><i>All*</i> pads, sorted by last edit date.</p>
+	</section>
+</header>
+<main>
+	<section>
+		<table>
+			<thead>
+				<tr>
+					<th>Pad</th>
+					<th>Revision</th>
+					<th>Last edit date</th>
+				</tr>
+			</thead>
+			<tbody>
+{% for pad in pads %}
+				<tr>
+					<td><a href="{{ pad.url }}">{{ pad.name }}</a></td>
+					<td>{{ pad.revision }}</td>
+					<td>{{ pad.last_change }}</td>
+				</tr>
+{% endfor %}
+			</tbody>
+		</table>
+	</section>
+</main>
+<footer>
+	<section>
+		* pads that are private and new pads without any changes are NOT listed.
+	</section>
+</footer>
+{% endblock %}

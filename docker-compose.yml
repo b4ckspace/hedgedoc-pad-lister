@@ -1,0 +1,31 @@
+---
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: unsicher123
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  pad:
+    image: quay.io/hedgedoc/hedgedoc:1.10.2-alpine
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      CMD_ALLOW_FREEURL: 'true'
+      CMD_DB_URL: postgres://postgres:unsicher123@db/postgres
+      CMD_DOMAIN: localhost
+      CMD_URL_ADDPORT: 'true'
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - uploads:/hedgedoc/public/uploads
+
+volumes:
+  database:
+  uploads:
