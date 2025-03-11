@@ -1,0 +1,7 @@
+**/.git*
+**/__pycache__
+.dockerignore
+.isort.cfg
+Dockerfile
+docker-compose.yml
+env
