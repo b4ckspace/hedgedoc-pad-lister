@@ -35,10 +35,7 @@ def create_app(config=None):
         for note in db.session.execute(
             db.select(Note).order_by(Note.lastchangeAt.desc())
         ).scalars():
-            if (
-                note.permission not in (Permission.editable, Permission.freely)
-                or not note.lastchangeAt
-            ):
+            if note.permission == Permission.private or not note.lastchangeAt:
                 continue
 
             note_id = (
