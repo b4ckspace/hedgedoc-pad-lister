@@ -3,15 +3,15 @@
 name: Docker
 
 on:
+  pull_request:
+    branches:
+      - main
+
   push:
     branches:
       - main
     tags:
       - v*.*.*
-
-  pull_request:
-    branches:
-      - main
 
   workflow_dispatch:
 
@@ -43,6 +43,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{version}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
