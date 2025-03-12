@@ -24,7 +24,7 @@ Create a virtual env and install dependencies:
 
 ```
 python3 -m venv env
-env/bin/pip install -r requirements.txt
+env/bin/pip3 install -r requirements.txt
 ```
 
 Start database and HedgeDoc:
