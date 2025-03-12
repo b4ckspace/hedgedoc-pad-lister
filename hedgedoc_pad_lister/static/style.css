@@ -41,21 +41,28 @@
 	padding: 0;
 }
 
-body {
-	background: #fff;
-	font-family: "Comic Neue", sans-serif;
-	font-size: 16px;
+a, a:active, a:visited {
+	color: #428bca;
+	text-decoration: none;
 }
 
-footer, header, main {
-	margin: 0 auto;
+a:focus, a:hover {
+	color: #2a6496;
+	outline: none;
+	text-decoration: underline;
+}
+
+body {
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	font-family: "Comic Neue", sans-serif;
+	font-size: 18px;
+	min-height: 100vh;
 }
 
 footer, header {
 	background: #eee;
-}
-
-header {
 }
 
 header h1 {
@@ -63,29 +70,62 @@ header h1 {
 }
 
 header p {
-	font-size: 1.5em;
+	font-size: 1.25em;
 }
 
 main {
+	flex-grow: 1;
 }
 
 section {
+	margin: 0 auto;
+	max-width: 1000px;
 	padding: 1em;
 	width: 100%;
 }
 
 table {
+	border-collapse: collapse;
 	width: 100%;
 }
 
-th, td {
-	padding: 0.5em 0.25em;
+tbody :is(tr, tr:nth-child(odd)):hover {
+	background: #f5f5f5;
+}
+
+tbody tr:not(:last-child) td {
+	border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(odd) {
+	background: #f9f9f9;
+}
+
+td, th {
+	padding: 0.5em;
+}
+
+:is(td, th).wrap {
+	display: none;
 }
 
 thead th {
+	border-bottom: 2px solid #ddd;
 	text-align: left;
 }
 
-tbody tr:nth-child(2n+1) {
-	background: #f5f5f5;
+@media only screen and (min-width: 600px) {
+	:is(td, th).wrap {
+		display: table-cell;
+	}
+
+	:is(td, th) .wrapped {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	header {
+		padding: 2em 0;
+	}
 }

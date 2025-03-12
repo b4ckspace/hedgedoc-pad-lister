@@ -14,17 +14,23 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Pad</th>
+					<th>
+						Pad
+						<div class="wrapped">Last edit date</div>
+					</th>
 					<th>Revision</th>
-					<th>Last edit date</th>
+					<th class="wrap">Last edit date</th>
 				</tr>
 			</thead>
 			<tbody>
 {% for pad in pads %}
 				<tr>
-					<td><a href="{{ pad.url }}">{{ pad.name }}</a></td>
+					<td>
+						<a href="{{ pad.url }}">{{ pad.name }}</a>
+						<div class="wrapped">{{ pad.last_change }}</div>
+					</td>
 					<td>{{ pad.revision }}</td>
-					<td>{{ pad.last_change }}</td>
+					<td class="wrap">{{ pad.last_change }}</td>
 				</tr>
 {% endfor %}
 			</tbody>
