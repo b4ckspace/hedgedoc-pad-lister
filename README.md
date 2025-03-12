@@ -41,3 +41,9 @@ export FLASK_SQLALCHEMY_DATABASE_URI="postgresql://postgres:unsicher123@localhos
 export FLASK_TIME_ZONE="Europe/Berlin"
 env/bin/flask --app hedgedoc_pad_lister run --debug
 ```
+
+## License
+
+* Code licensed under [AGPL-3.0](LICENSE)
+* "Comic Neue" licensed under [OFL-1.1](hedgedoc_pad_lister/static/OFL.txt)
+* Material Symbols licensed under [Apache-2.0](hedgedoc_pad_lister/static/LICENSE-2.0.txt)
