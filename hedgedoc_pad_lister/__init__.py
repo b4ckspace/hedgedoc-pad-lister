@@ -1,4 +1,5 @@
 from base64 import urlsafe_b64encode
+from zoneinfo import ZoneInfo
 
 from flask import Flask, render_template
 from sqlalchemy import func
@@ -17,6 +18,7 @@ def create_app(config=None):
     db.init_app(app)
 
     base_url = app.config["BASE_URL"].rstrip("/")
+    tz = ZoneInfo(app.config["TIME_ZONE"])
 
     @app.route("/")
     def index():
@@ -28,8 +30,6 @@ def create_app(config=None):
                 "error.html",
                 message="Database schema is possibly outdated; please check and update if required.",
             )
-
-        print(db.select(Note).join(Note.revisions).order_by(Note.lastchangeAt))
 
         pads = []
         for note in db.session.execute(
@@ -48,7 +48,9 @@ def create_app(config=None):
             )
             pads.append(
                 {
-                    "last_change": note.lastchangeAt.isoformat(" ", timespec="seconds"),
+                    "last_change": note.lastchangeAt.astimezone(tz).isoformat(
+                        " ", timespec="seconds"
+                    ),
                     "name": (
                         note.title
                         if note.title != "Untitled"
