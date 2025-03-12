@@ -3,5 +3,6 @@
 .dockerignore
 .isort.cfg
 Dockerfile
+README.md
 docker-compose.yml
 env
