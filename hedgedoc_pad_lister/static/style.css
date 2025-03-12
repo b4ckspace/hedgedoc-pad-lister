@@ -73,6 +73,10 @@ header p {
 	font-size: 1.25em;
 }
 
+img.icon {
+	vertical-align: bottom;
+}
+
 main {
 	flex-grow: 1;
 }

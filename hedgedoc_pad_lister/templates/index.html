@@ -27,6 +27,9 @@
 				<tr>
 					<td>
 						<a href="{{ pad.url }}">{{ pad.name }}</a>
+{% if not pad.allow_guests %}
+						<img class="icon" src="{{ url_for('static', filename='visibility_off_20px.svg') }}" title="Guests forbidden">
+{% endif %}
 						<div class="wrapped">{{ pad.last_change }}</div>
 					</td>
 					<td>{{ pad.revision }}</td>

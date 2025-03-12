@@ -45,6 +45,8 @@ def create_app(config=None):
             )
             pads.append(
                 {
+                    "allow_guests": note.permission
+                    in (Permission.editable, Permission.freely, Permission.locked),
                     "last_change": note.lastchangeAt.astimezone(tz).isoformat(
                         " ", timespec="seconds"
                     ),
