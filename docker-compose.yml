@@ -9,6 +9,7 @@ services:
     environment:
       FLASK_BASE_URL: http://localhost:3000/
       FLASK_SQLALCHEMY_DATABASE_URI: postgresql://postgres:unsicher123@db/postgres
+      FLASK_TIME_ZONE: Europe/Berlin
     ports:
       - 127.0.0.1:8000:8000
 
